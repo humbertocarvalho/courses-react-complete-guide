@@ -5,12 +5,10 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
-      {
-        id: 1,
-        name: 'Max',
-        age: 28
-      },
-      { id: 2, name: 'Manu', age: 29 }
+      { id: 1, name: 'Max', age: 28 },
+      { id: 2, name: 'Manu', age: 29 },
+      { id: 3, name: 'Joao', age: 29 },
+      { id: 4, name: 'Maria', age: 29 }
     ],
     otherState: 'some other value',
     showPersons: false
@@ -75,10 +73,20 @@ class App extends Component {
       style.backgroundColor = 'red';
     }
 
+    const classes = [];
+
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
+    }
+
     return (
       <div className='App'>
         <h1>Hi, Im a react app</h1>
-        <p>Will this work?</p>
+        <p className={classes.join(' ')}>Will this work?</p>
         <button style={style} onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>
